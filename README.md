@@ -16,7 +16,7 @@ And add the class `doc` to each `script` tag that you want to copy:
 
 Then code-doc will populate the div with the content from the script tags.
 
-#api
+# api
 All API methods return the module itself in order to call them with chaining.
 If you want to have the first line of each code block as a heading, call
 ```
