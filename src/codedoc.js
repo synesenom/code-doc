@@ -98,7 +98,7 @@
 
                 // Add heading
                 if (_heading) {
-                    var title = lines[0].replace(/^\/\//).trim();
+                    var title = lines[0].replace(/^\/\//, '').trim();
                     var heading = document.createElement("h1");
                     heading.innerHTML = title;
                     document.getElementById(_into).appendChild(heading);

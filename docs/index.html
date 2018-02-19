@@ -46,7 +46,7 @@
             position: relative;
             width: 100%;
             height: auto;
-            color: #a8ff60;
+            color: white;
             font-size: 1.1em;
             margin-top: 60px;
             margin-bottom: 30px;
@@ -74,7 +74,7 @@
                 background-color: transparent;
             }
             50% {
-                background-color: #a8ff60;
+                background-color: white;
             }
         }
         @-moz-keyframes blink {
@@ -82,7 +82,7 @@
                 background-color: transparent;
             }
             50% {
-                background-color: #a8ff60;
+                background-color: white;
             }
         }
         @-webkit-keyframes blink {
@@ -90,7 +90,7 @@
                 background-color: transparent;
             }
             50% {
-                background-color: #a8ff60;
+                background-color: white;
             }
         }
         .inline {
@@ -168,10 +168,11 @@
 </script>
 <script class="doc">
 var messages = [
-    "This message is typed by the code here:",
-    "The code was copied from the script that generates this text"
+    "This message is typed by the code here: ",
+    "The code was copied from the script that generates this text ",
+    "With code-doc you only write the script once and code blocks are created automatically "
 ];
-var i = 1,
+var i = 0,
     dir = -1;
 var elem = document.getElementById("message");
 
@@ -179,18 +180,18 @@ function paw() {
     var t = elem.innerHTML;
     elem.innerHTML = messages[i].slice(0, t.length + dir);
     if (t.length === 0) {
-        i = (i+1) % 2;
+        i = (i+1) % 3;
         dir = 1;
         elem.innerHTML = messages[i].slice(0, 1);
-        setTimeout(paw, Math.random() * 500);
+        setTimeout(paw, Math.random() * 200);
     }
     else if (t.length === messages[i].length) {
         dir = -1;
-        setTimeout(paw, Math.random() * 10000);
+        setTimeout(paw, Math.random() * 6000);
     } else {
-        setTimeout(paw, Math.random() * 500);
+        setTimeout(paw, Math.random() * 200);
     }
 }
-setTimeout(paw, 6000);
+setTimeout(paw, 3000);
 </script>
 </html>
