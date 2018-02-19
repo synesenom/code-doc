@@ -1,0 +1,8 @@
+{
+  "name": "code-doc",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "uglify-js": "^3.3.11"
+  }
+}

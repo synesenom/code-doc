@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="ir-black.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../src/codedoc.js"></script>
+    <script>
+        codedoc.callback(function() {
+            hljs.initHighlighting.called = false;
+            hljs.initHighlighting();
+        });
+    </script>
+    <title>code-doc</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: 'Montserrat', 'Avenir Next', sans-serif;
+        }
+        main {
+            width: 600px;
+            margin: 0 auto;
+            margin-bottom: 40px;
+        }
+        @media screen and (max-width: 800px) {
+            main {
+                width: 80%;
+            }
+        }
+        .title {
+            display: block;
+            position: relative;
+            width: 100%;
+            font-family: 'Montserrat', 'Avenir Next', sans-serif;
+            font-size: 2em;
+            margin-top: 50px;
+        }
+        .container {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: auto;
+            color: #a8ff60;
+            font-size: 1.1em;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            font-family: 'Courier', monospace;
+        }
+        h1 {
+            font-size: 1.4em;
+            font-weight: 100;
+            margin-top: 50px;
+        }
+        #code-doc {
+            font-size: 0.9em;
+            margin-bottom: 40px;
+        }
+        .caret {
+            width: 0.5em;
+            height: 1em;
+            display: inline-block;
+            -webkit-animation: 1s blink step-end infinite;
+            -moz-animation: 1s blink step-end infinite;
+            animation: 1s blink step-end infinite;
+        }
+        @keyframes blink {
+            from, to {
+                background-color: transparent;
+            }
+            50% {
+                background-color: #a8ff60;
+            }
+        }
+        @-moz-keyframes blink {
+            from, to {
+                background-color: transparent;
+            }
+            50% {
+                background-color: #a8ff60;
+            }
+        }
+        @-webkit-keyframes blink {
+            from, to {
+                background-color: transparent;
+            }
+            50% {
+                background-color: #a8ff60;
+            }
+        }
+        .inline {
+            background-color: gray;
+            color: white;
+            font-family: 'Courier', monospace;
+            font-weight: bold;
+            padding: 1px 3px;
+            font-size: 0.8em;
+            border-radius: 2px;
+        }
+        pre {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #444;
+        }
+        .sponsors {
+            width: 100%;
+            position: relative;
+        }
+        .sponsors img {
+            width: 120px;
+            display: block;
+            position: relative;
+            margin-top: 20px;
+            opacity: 0.5;
+            filter: invert(100%);
+        }
+        .sponsors img:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div class="title">code-doc</div>
+    <div class="container">
+        <span id="message">This message is typed by the code here:</span><span class="caret">&nbsp;</span>
+    </div>
+    <div id="code-doc"></div>
+
+    <h1>usage</h1>
+    Create a <code class="inline">div</code> with the id <code class="inline">code-doc</code>:
+    <pre><code class="html">&lt;div id="code-doc"&gt;&lt;/div&gt;</code></pre>
+
+    And add the class <code class="inline">doc</code> to each <code class="inline">script</code> tag that you want to copy:
+    <pre><code class="html">&lt;script class="doc"&gt;
+// Your awesome code
+&lt;/script&gt;</code></pre>
+
+    Then code-doc will populate the div with the content from the script tags.
+
+    <h1>api</h1>
+    All API methods return the module itself in order to call them with chaining.
+    If you want to have the first line of each code block as a heading, call
+    <pre><code class="javascript">codedoc.heading();</code></pre>
+
+    Also, if any additional callback should be triggered (such as highlighting after the code blocks are populated),
+    set it with <code class="inline">callback(func)</code>:
+    <pre><code class="javascript">codedoc.callback(func);</code></pre>
+    This will trigger the function <code class="inline">func</code> once the blocks are ready.
+
+    To re-run the code generation, simply call
+    <pre><code class="javascript">codedoc.run();</code></pre>
+
+    <h1>built with</h1>
+    <div class="sponsors">
+        <a href="https://www.jetbrains.com/webstorm/"><img src="img/ws-logo.png"></a>
+    </div>
+</main>
+</body>
+<script>
+
+</script>
+<script class="doc">
+var messages = [
+    "This message is typed by the code here:",
+    "The code was copied from the script that generates this text"
+];
+var i = 1,
+    dir = -1;
+var elem = document.getElementById("message");
+
+function paw() {
+    var t = elem.innerHTML;
+    elem.innerHTML = messages[i].slice(0, t.length + dir);
+    if (t.length === 0) {
+        i = (i+1) % 2;
+        dir = 1;
+        elem.innerHTML = messages[i].slice(0, 1);
+        setTimeout(paw, Math.random() * 500);
+    }
+    else if (t.length === messages[i].length) {
+        dir = -1;
+        setTimeout(paw, Math.random() * 10000);
+    } else {
+        setTimeout(paw, Math.random() * 500);
+    }
+}
+setTimeout(paw, 6000);
+</script>
+</html>
