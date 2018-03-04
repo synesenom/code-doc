@@ -5,3 +5,5 @@ uglifyjs \
     src/codedoc.js \
     -m \
     --output codedoc.min.js
+
+cp codedoc.min.js docs
