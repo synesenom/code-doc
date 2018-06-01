@@ -22,24 +22,18 @@
             background-color: black;
             color: white;
             font-family: 'Montserrat', 'Avenir Next', sans-serif;
+            font-weight: 300;
         }
         main {
             width: 600px;
             margin: 0 auto;
             margin-bottom: 40px;
+            line-height: 1.5em;
         }
         @media screen and (max-width: 800px) {
             main {
                 width: 80%;
             }
-        }
-        .title {
-            display: block;
-            position: relative;
-            width: 100%;
-            font-family: 'Montserrat', 'Avenir Next', sans-serif;
-            font-size: 2em;
-            margin-top: 50px;
         }
         .container {
             display: block;
@@ -52,11 +46,14 @@
             margin-bottom: 30px;
             font-family: 'Courier', monospace;
         }
+        #message {
+            color: yellowgreen;
+        }
         h1 {
             font-size: 1.4em;
-            font-weight: bold;
-            margin-top: 50px;
-            color: dodgerblue;
+            font-weight: normal;
+            margin-top: 70px;
+            color: #aaa;
         }
         #code-doc {
             font-size: 0.9em;
@@ -64,7 +61,7 @@
         }
         .caret {
             width: 0.5em;
-            height: 1em;
+            height: 1.2em;
             display: inline-block;
             -webkit-animation: 1s blink step-end infinite;
             -moz-animation: 1s blink step-end infinite;
@@ -95,21 +92,23 @@
             }
         }
         .inline {
-            background-color: #ccc;
-            color: black;
+            background-color: #333333;
+            color: #aaa;
             font-family: 'Courier', monospace;
             padding: 1px 4px;
-            font-size: 1em;
+            font-size: .95em;
             border-radius: 2px;
         }
         pre {
             margin-top: 20px;
             margin-bottom: 30px;
-            border-radius: 5px;
-            border: 1px solid white;
+            width: calc(100% - 4px);
+            border-left: 4px solid grey;
         }
         pre code {
-            border-radius: 5px;
+            padding: 20px !important;
+            background-color: #111111 !important;
+            line-height: 1.2em;
         }
         .sponsors {
             width: 100%;
@@ -131,7 +130,6 @@
 </head>
 <body>
 <main>
-    <div class="title">code-doc</div>
     <div class="container">
         <span id="message">This message is typed by the code here:</span><span class="caret">&nbsp;</span>
     </div>
@@ -175,10 +173,10 @@ var messages = [
     "This message is typed by the code here: ",
     "The code was copied from the script that generates this text ",
     "With code-doc you only write the script once and code blocks are created automatically "
-];
-var i = 0,
-    dir = -1;
-var elem = document.getElementById("message");
+],
+    i = 0,
+    dir = -1,
+    elem = document.getElementById("message");
 
 function paw() {
     var t = elem.innerHTML;

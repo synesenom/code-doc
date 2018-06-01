@@ -1,6 +1,10 @@
 {
-  "name": "code-doc",
-  "version": "0.0.1",
+  "name": "codedoc-js",
+  "author": "Enys Mones",
+  "license": "MIT",
+  "homepage": "https://synesenom.github.io/code-doc/",
+  "repository": "https://github.com/synesenom/code-doc",
+  "version": "1.0.1",
   "dependencies": {},
   "devDependencies": {
     "uglify-js": "^3.3.11"
